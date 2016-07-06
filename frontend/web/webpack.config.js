@@ -7,6 +7,8 @@ var CleanPlugin       = require('clean-webpack-plugin');// clean bulid file
 var webpackConfig     = module.exports = {};//　init object
 var production        = process.env.NODE_ENV === 'production';// production environment
 
+var domain            = 'http://vue-in-yii2.local/';// host
+
 // input
 webpackConfig.entry　 =　{
   app:[
@@ -21,7 +23,7 @@ webpackConfig.entry　 =　{
 
 webpackConfig.output = {
   path: './dist',
-  publicPath: './',
+  publicPath: domain+'dist/',
   filename: production? '[name].[hash].js': '[name].js'
 };//　output
 
@@ -36,8 +38,10 @@ webpackConfig.module = {
       test: /\.vue$/, 
       loader: 'vue'
     },
-    { test: /\.js$/, 
-      loader: 'babel'
+    { 
+      test: /\.js$/, 
+      loader: 'babel',
+      query: {compact: false}
     },
     { 
       test: /\.(eot(|\?v=.*)|woff(|\?v=.*)|woff2(|\?v=.*)|ttf(|\?v=.*)|svg(|\?v=.*))$/, 
