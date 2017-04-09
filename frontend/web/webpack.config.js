@@ -7,7 +7,7 @@ var CleanPlugin       = require('clean-webpack-plugin');// clean bulid file
 var webpackConfig     = module.exports = {};//　init object
 var production        = process.env.NODE_ENV === 'production';// production environment
 
-var domain            = 'http://vue-in-yii2.local/';// host
+var domain            = process.env.DOMAIN; // your domain process.env.domain
 
 // input
 webpackConfig.entry　 =　{
@@ -30,25 +30,25 @@ webpackConfig.output = {
 //doc loader
 webpackConfig.module = {
   loaders : [
-    { 
-      test: /\.css$/, 
+    {
+      test: /\.css$/,
       loader: ExtractPlugin.extract('style', 'css')
     },
-    { 
-      test: /\.vue$/, 
+    {
+      test: /\.vue$/,
       loader: 'vue'
     },
-    { 
-      test: /\.js$/, 
+    {
+      test: /\.js$/,
       loader: 'babel',
       query: {compact: false}
     },
-    { 
-      test: /\.(eot(|\?v=.*)|woff(|\?v=.*)|woff2(|\?v=.*)|ttf(|\?v=.*)|svg(|\?v=.*))$/, 
+    {
+      test: /\.(eot(|\?v=.*)|woff(|\?v=.*)|woff2(|\?v=.*)|ttf(|\?v=.*)|svg(|\?v=.*))$/,
       loader: 'file'
     },
-    { 
-      test: /\.json/, 
+    {
+      test: /\.json/,
       loader: 'json'
     },
   ]
@@ -78,7 +78,3 @@ if (production) {
     new CleanPlugin('dist')
     ]);
 }
-
-
-
-

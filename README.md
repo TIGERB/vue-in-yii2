@@ -9,6 +9,7 @@ HOW TO USE
 - step4: npm install
 - step5: bower install
 - step6: npm run test(or build)
+- step7: open website '<http://localhost:666>'
 
 DIRECTORY STRUCTURE
 -------------------
